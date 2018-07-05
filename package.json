@@ -1,7 +1,7 @@
 {
-  "name": "euglena-projector",
+  "name": "euglenalab-projector-client-demo",
   "version": "0.0.0",
-  "description": "server that communicates with an iVation IVPJMP70 projector",
+  "description": "example client of a euglenalab-projector server instance",
   "main": "bpu.js",
   "dependencies": {
     "net": "~1.0.2"
