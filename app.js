@@ -4,7 +4,8 @@ const port = 32003;
 
 var socket = io.connect('http://localhost' + ':' + port);
 socket.on('reply', function (data) {
-  console.log('socket-io: reply -' + data['message']);
+  // Pretty-print JSON response
+  console.log('socket-io: reply -' + JSON.stringify(data, null, 2));
 });
 
 
