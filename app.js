@@ -4,7 +4,7 @@ const port = 32003;
 
 var socket = io.connect('http://localhost' + ':' + port);
 socket.on('reply', function (data) {
-  console.log('socket-io: reply -' + data);
+  console.log('socket-io: reply -' + data['message']);
 });
 
 
