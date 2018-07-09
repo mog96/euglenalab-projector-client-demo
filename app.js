@@ -1,11 +1,8 @@
-var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var io = require('socket.io-client');
 
 const port = 32003;
 
-var socket = new io.Socket();
-socket.connect('http://localhost' + ':' + port);
+var socket = io.connect('http://localhost' + ':' + port);
 socket.on('reply', function (data) {
   console.log('socket-io: reply -' + data);
 });
