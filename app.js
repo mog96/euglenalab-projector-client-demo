@@ -4,7 +4,7 @@ var io = require('socket.io')(server);
 
 const port = 32003;
 
-var socket = io.Socket();
+var socket = new io.Socket();
 socket.connect('http://localhost' + ':' + port);
 socket.on('reply', function (data) {
   console.log('socket-io: reply -' + data);
