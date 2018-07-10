@@ -46,6 +46,7 @@ var runLoop = function() {
   // }, 5000);
 
   var runInt = setInterval(function() {
+    console.log('emitting command')
     socket.emit('command', null);
   }, 5000);
 };
