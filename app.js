@@ -30,6 +30,9 @@ var arrayToString = function(array) {
 
 // MARK: - Run Loop
 
+const canvasWidth = 640;
+const canvasHeight = 480;
+
 var runLoop = function() {
   // Draw two sides of an obtuse blue triangle from top left to center to middle right
   // var runInt = setInterval(function() {
