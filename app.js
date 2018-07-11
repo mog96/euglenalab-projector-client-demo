@@ -3,7 +3,7 @@ const port = 32003;
 var socket = io.connect('http://localhost' + ':' + port);
 socket.on('reply', function (data) {
   // Pretty-print JSON response
-  console.log('socket-io: reply -' + JSON.stringify(data, null, 2));
+  console.log('socket-io: reply - ' + JSON.stringify(data, null, 2));
 });
 
 // MARK: - JSON Helpers
