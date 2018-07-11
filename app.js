@@ -6,28 +6,6 @@ socket.on('reply', function (data) {
   console.log('socket-io: reply - ' + JSON.stringify(data, null, 2));
 });
 
-// MARK: - JSON Helpers
-
-var boolToString = function(bool) {
-  return bool ? "true" : "false";
-}
-
-var arrayToString = function(array) {
-  var arrayString = '[';
-  for (var i = 0; i < array.length; i++) {
-    if (Array.isArray(array[i])) {
-      arrayString += arrayToString(array[i]);
-    } else {
-      arrayString += array[i];
-    }
-    if (i < array.length -1) {
-      arrayString += ', ';
-    }
-  }
-  arrayString += ']';
-  return arrayString;
-}
-
 // MARK: - Run Loop
 
 const canvasWidth = 640;
