@@ -34,12 +34,39 @@ const canvasWidth = 640;
 const canvasHeight = 480;
 
 var runLoop = function() {
-  // Draw two sides of an obtuse blue triangle from top left to center to middle right
   // var runInt = setInterval(function() {
-  //   let vertices = [[0, 0], [canvasWidth / 2, canvasHeight / 2], [canvasWidth, canvasHeight / 2]];
-  //   drawLine(projector.ofApp, vertices, [0, 0, 255, 1]);
+  //   console.log('emitting clearScreen command')
+  //   socket.emit('command', { command: 'clearScreen' });
   // }, 5000);
-  
+
+  // Draw blue points top to bottom, left to right across entire canvas,
+  // one point per second
+  // var r = 0;
+  // var c = 0;
+  // var runInt = setInterval(function() {
+  //   console.log('emitting drawPoint command');
+  //   socket.emit('command', {
+  //     command: 'drawPoint',
+  //     x: c,
+  //     y: r,
+  //     color: [0, 0, 255, 1]
+  //   })
+  //   r++;
+  //   if (r >= canvasHeight) {
+  //     r = 0;
+  //     c++;
+  //   }
+  // }, 1000);
+
+  // Draw two sides of an obtuse blue triangle from top left to center to middle right
+  var runInt = setInterval(function() {
+    socket.emit('command', {
+      command: 'drawLine',
+      vertices: [[0, 0], [canvasWidth / 2, canvasHeight / 2], [canvasWidth, canvasHeight / 2]],
+      color: [0, 0, 255, 1]
+    })
+  }, 5000);
+
   // Draw a filled blue triangle from top left to center to middle left
   // var runInt = setInterval(function() {
   //   drawShape(projector.ofApp, [[0, 0], [canvasWidth / 2, canvasHeight / 2], [0, canvasHeight / 2]], [0, 0, 255, 1], true);
@@ -53,34 +80,6 @@ var runLoop = function() {
   //   let h = canvasHeight / 2;
   //   drawEllipse(projector.ofApp, x, y, w, h, [0, 0, 255, 1], true);
   // }, 5000);
-
-  // var runInt = setInterval(function() {
-  //   console.log('alive');
-  // }, 5000);
-
-  // var runInt = setInterval(function() {
-  //   console.log('emitting command')
-  //   socket.emit('command', null);
-  // }, 5000);
-
-  // Draw blue points top to bottom, left to right across entire canvas,
-  // one point per second
-  var r = 0;
-  var c = 0;
-  var runInt = setInterval(function() {
-    console.log('emitting drawPoint command');
-    socket.emit('command', {
-      command: 'drawPoint',
-      x: c,
-      y: r,
-      color: [0, 0, 255, 1]
-    })
-    r++;
-    if (r >= canvasHeight) {
-      r = 0;
-      c++;
-    }
-  }, 1000);
 };
 
 runLoop();
