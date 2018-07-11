@@ -1,13 +1,34 @@
 var io = require('socket.io-client');
-
 const port = 32003;
-
 var socket = io.connect('http://localhost' + ':' + port);
 socket.on('reply', function (data) {
   // Pretty-print JSON response
   console.log('socket-io: reply -' + JSON.stringify(data, null, 2));
 });
 
+// MARK: - JSON Helpers
+
+var boolToString = function(bool) {
+  return bool ? "true" : "false";
+}
+
+var arrayToString = function(array) {
+  var arrayString = '[';
+  for (var i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      arrayString += arrayToString(array[i]);
+    } else {
+      arrayString += array[i];
+    }
+    if (i < array.length -1) {
+      arrayString += ', ';
+    }
+  }
+  arrayString += ']';
+  return arrayString;
+}
+
+// MARK: - Run Loop
 
 var runLoop = function() {
   // Draw blue points top to bottom, left to right across entire canvas
