@@ -82,10 +82,10 @@ var runLoop = function() {
   var runInt = setInterval(function() {
     socket.emit('command', {
       command: 'drawEllipse',
-      x: canvasWidth / 2,
-      y: canvasHeight / 2,
-      w: canvasWidth / 2,
-      h: canvasHeight / 2,
+      centerX: canvasWidth / 2,
+      centerY: canvasHeight / 2,
+      width: canvasWidth / 2,
+      height: canvasHeight / 2,
       color: [0, 0, 255, 1],
       shouldFill: true
     })
