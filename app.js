@@ -31,17 +31,6 @@ var arrayToString = function(array) {
 // MARK: - Run Loop
 
 var runLoop = function() {
-  // Draw blue points top to bottom, left to right across entire canvas
-  // var r = 0;
-  // var c = 0;
-  // var runInt = setInterval(function() {
-  //   drawPoint(projector.ofApp, c, r++, [0, 0, 255, 1]);
-  //   if (r >= canvasHeight) {
-  //     r = 0;
-  //     c++;
-  //   }
-  // }, 500);
-
   // Draw two sides of an obtuse blue triangle from top left to center to middle right
   // var runInt = setInterval(function() {
   //   let vertices = [[0, 0], [canvasWidth / 2, canvasHeight / 2], [canvasWidth, canvasHeight / 2]];
@@ -66,10 +55,28 @@ var runLoop = function() {
   //   console.log('alive');
   // }, 5000);
 
+  // var runInt = setInterval(function() {
+  //   console.log('emitting command')
+  //   socket.emit('command', null);
+  // }, 5000);
+
+  // Draw blue points top to bottom, left to right across entire canvas,
+  // one point per second
+  var r = 0;
+  var c = 0;
   var runInt = setInterval(function() {
-    console.log('emitting command')
-    socket.emit('command', null);
-  }, 5000);
+    socket.emit('command', {
+      command: 'drawPooint',
+      x: c,
+      y: r,
+      color: [0, 0, 255, 1]
+    })
+    r++;
+    if (r >= canvasHeight) {
+      r = 0;
+      c++;
+    }
+  }, 1000);
 };
 
 runLoop();
