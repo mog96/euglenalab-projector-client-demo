@@ -68,9 +68,10 @@ var runLoop = function() {
   var r = 0;
   var c = 0;
   var runInt = setInterval(function() {
+    console.log('emitting drawPoint command');
     socket.emit('command', {
       command: 'drawPoint',
-      xx: c,
+      x: c,
       y: r,
       color: [0, 0, 255, 1]
     })
