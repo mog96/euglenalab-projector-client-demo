@@ -57,16 +57,37 @@ var runLoop = function() {
   // }, 5000);
 
   // Draw a filled blue ellipse in the center of the screen every 5 s
+  // var runInt = setInterval(function() {
+  //   socket.emit('command', {
+  //     command: 'drawEllipse',
+  //     centerX: canvasWidth / 2,
+  //     centerY: canvasHeight / 2,
+  //     width: canvasWidth / 2,
+  //     height: canvasHeight / 2,
+  //     color: [0, 0, 255, 1],
+  //     shouldFill: true
+  //   })
+  // }, 5000);
+
+  // Draw a filled blue ellipse in the center of the screen and clear it after 5s
+  var shouldClear = false;
   var runInt = setInterval(function() {
-    socket.emit('command', {
-      command: 'drawEllipse',
-      centerX: canvasWidth / 2,
-      centerY: canvasHeight / 2,
-      width: canvasWidth / 2,
-      height: canvasHeight / 2,
-      color: [0, 0, 255, 1],
-      shouldFill: true
-    })
+    shouldClear = !shouldClear;
+    if (shouldClear) {
+      console.log('emitting clearScreen command');
+      socket.emit('command', { command: 'clearScreen' });
+    } else {
+      console.log('emitting drawEllipse command');
+      socket.emit('command', {
+        command: 'drawEllipse',
+        centerX: canvasWidth / 2,
+        centerY: canvasHeight / 2,
+        width: canvasWidth / 2,
+        height: canvasHeight / 2,
+        color: [0, 0, 255, 1],
+        shouldFill: true
+      })
+    }
   }, 5000);
 };
 
